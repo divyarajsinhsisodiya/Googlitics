@@ -1,6 +1,6 @@
 {
     "name": "cornford/googlitics",
-    "description": "An easy way to intergrate Google Analytics with Laravel.",
+    "description": "An easy way to integrate Google Analytics with Laravel.",
     "keywords": ["laravel", "google", "analytics", "tracking", "statistics"],
     "license": "MIT",
     "authors": [
@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": ">=7.2",
+        "ext-json": "*",
         "illuminate/support": "^7.0",
         "illuminate/view": "^7.0",
         "laravel/framework": "^7.0",
@@ -18,12 +19,23 @@
     },
     "require-dev": {
         "phpspec/phpspec": "^6.0",
-        "mockery/mockery": "^1.3.1"
+        "mockery/mockery": "^1.3.1",
+        "phpunit/phpunit": "^8.4"
     },
     "autoload": {
         "psr-0": {
             "Cornford\\Googlitics": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Cornford\\Googlitics\\AnalyticsServiceProvider"
+            ],
+            "aliases": {
+                "Mapper": "Cornford\\Googlitics\\Facades\\AnalyticsFacade"
+            }
+        }
+    }
 }
